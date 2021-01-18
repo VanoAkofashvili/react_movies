@@ -103,6 +103,7 @@ body {
 
 .header__container {
   width: 90%;
+  max-width: 1200px;
   height: 6rem;
   margin: 0 auto;
   display: flex;
@@ -143,17 +144,11 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-top: 2.5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1.5rem;
 }
 
-/* @media screen and (min-width: 768px) {
-  .main {
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: "category main";
-  }
 
-} */
 
 /* Category */
 .category {
@@ -212,6 +207,8 @@ body {
   border-left: 5px solid #319ce7;
   background-color: #f1f1f1;
 }
+
+
 
 
 /* Search */
@@ -299,6 +296,10 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-card__details--show {
@@ -327,4 +328,89 @@ body {
 
 .movie-card__details span {
   color: white;
+}
+
+.see_more {
+  margin-left: .5rem;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.see_more a {
+  font-family: "bpg_arial";
+  color: #fff;
+}
+
+.see_more:hover a,
+.see_more:focus a {
+  color: #FF6600;
+  text-decoration: underline;
+}
+
+.see_more svg {
+  margin-right: 1rem;
+  font-size: 2rem;
+  color:#319CE7;
+}
+
+/* medias */
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
+}
+
+@media screen and (min-width: 576px) {
+  .home {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    grid-template-columns: 180px 3fr;
+    grid-template-areas: "category main";
+  }
+
+  .home {
+    grid-area: main;
+  }
+
+  .category {
+    all: initial;
+  }
+
+  .category__container {
+    grid-area: category;
+  }
+
+  .category h4 {
+    font-size: 1.6rem;
+    border-radius: 4px;
+  }
+
+  .category__close,
+  .cat_menu {
+    display: none;
+  }
+
+  .header__search > * {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+@media screen and (min-width: 890px) {
+  .home {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .home {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }

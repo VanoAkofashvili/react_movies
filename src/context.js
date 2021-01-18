@@ -58,9 +58,21 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "LOADING", payload: load });
   };
 
+  const setMovies = (data) => {
+    console.log(data);
+    dispatch({ type: "SET_MOVIES", payload: data });
+  };
+
   return (
     <AppContext.Provider
-      value={{ ...state, openSidebar, closeSidebar, openSearch, closeSearch }}
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+        openSearch,
+        closeSearch,
+        setMovies,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -50,26 +50,27 @@ export default function MovieCard({
       </div>
       <h4 className="mt-1">{title}</h4>
       <p className="movie-card__year">{release_date.split("-")[0]}</p>
-      <div
-        className="movie-card__details movie-card__details--show"
-        ref={cardRef}
-      >
-        <p className="d_title pt-1 pl-1">{title}</p>
-        <p className="d_overview mt-1">{overview.slice(0, 200)}...</p>
-        <p className="d_imdb flex-row-center mt-2">
-          <FaImdb className="mr-1" /> {vote_average}
+      <div className="movie-card__details" ref={cardRef}>
+        <div>
+          <p className="d_title pt-1 pl-1">{title}</p>
+          <p className="d_overview mt-1">{overview.slice(0, 150)}...</p>
+          <p className="d_imdb flex-row-center mt-2">
+            <FaImdb className="mr-1" /> {vote_average}
+          </p>
+          <p className="d_genre mt-1">
+            <span>ჟანრი:</span>{" "}
+            {mGenres.join(", ") || "ჟანრი არ არის მითითებული"}
+          </p>
+          <p>
+            <span>ენა:</span> {original_language}
+          </p>
+          <p>
+            <span>წელი:</span> {release_date.split("-")[0]}
+          </p>
+        </div>
+        <p className="see_more flex-row-center">
+          <FiPlayCircle /> <a href="#">ფილმის ყურება</a>
         </p>
-        <p className="d_genre mt-1">
-          <span>ჟანრი:</span> {mGenres.join(", ") || "ჟანრი არ არის მითითებული"}
-        </p>
-        <p>
-          <span>ენა:</span> {original_language}
-        </p>
-        <p>
-          <span>წელი:</span> {release_date.split("-")[0]}
-        </p>
-        <FiPlayCircle /> ფილმის ყურება
-        <p></p>
       </div>
     </div>
   );

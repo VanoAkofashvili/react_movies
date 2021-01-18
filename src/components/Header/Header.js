@@ -44,7 +44,10 @@ export default function Header() {
             <div className="header__icons__item">
               <FaUserAlt />
             </div>
-            <div className="header__icons__item" onClick={categoryClickHandler}>
+            <div
+              className="header__icons__item cat_menu"
+              onClick={categoryClickHandler}
+            >
               <GiHamburgerMenu />
             </div>
           </div>

@@ -1,13 +1,17 @@
 import React from "react";
+
 import { MdLabel } from "react-icons/md";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { GrClose } from "react-icons/gr";
 
+import { Link } from "react-router-dom";
+
 // context
 import { useGlobalContext } from "../../context";
 
-export default function Category() {
-  const { isSidebarOpen, closeSidebar } = useGlobalContext();
+const Category = () => {
+  const { isSidebarOpen, closeSidebar, genres } = useGlobalContext();
+
   return (
     <div className={`category ${isSidebarOpen ? "category--show" : ""}`}>
       <h4 className="flex-row-center">
@@ -19,32 +23,18 @@ export default function Category() {
         </div>
       </h4>
       <ul>
-        <li>
-          <a href="#">
-            <RiArrowRightSLine /> ანიმაციური
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <RiArrowRightSLine /> ანიმე
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <RiArrowRightSLine /> ბიოგრაფიული
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <RiArrowRightSLine /> თრილერი
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <RiArrowRightSLine /> კომედიური
-          </a>
-        </li>
+        {genres.map((genre) => {
+          return (
+            <li key={genre.id}>
+              <Link to={`/genre/${genre.id}`}>
+                <RiArrowRightSLine /> {genre.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
-}
+};
+
+export default Category;
