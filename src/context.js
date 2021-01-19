@@ -1,4 +1,10 @@
-import React, { useContext, useReducer, useEffect } from "react";
+import React, {
+  useContext,
+  useReducer,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import { reducer } from "./reducer";
 import axios from "./axios";
 
@@ -9,11 +15,14 @@ const defaultState = {
   isSearchOpen: false,
   movies: [],
   genres: [],
+  moviesGenre: [],
   isLoading: false,
 };
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+  const categoryRef = useRef(null);
+  const categoryIconRef = useRef(null);
 
   useEffect(() => {
     setLoading(true);
@@ -59,9 +68,12 @@ const AppProvider = ({ children }) => {
   };
 
   const setMovies = (data) => {
-    console.log(data);
     dispatch({ type: "SET_MOVIES", payload: data });
   };
+
+  const setMovieGenre = useCallback((data) => {
+    dispatch({ type: "SET_MOVIES_GENRE", payload: data });
+  }, []);
 
   return (
     <AppContext.Provider
@@ -72,6 +84,9 @@ const AppProvider = ({ children }) => {
         openSearch,
         closeSearch,
         setMovies,
+        setMovieGenre,
+        categoryRef,
+        categoryIconRef,
       }}
     >
       {children}

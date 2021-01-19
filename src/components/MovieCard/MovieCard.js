@@ -3,6 +3,7 @@ import { FaImdb } from "react-icons/fa";
 import { FiPlayCircle } from "react-icons/fi";
 
 import { useGlobalContext } from "../../context";
+import { Link } from "react-router-dom";
 
 export default function MovieCard({
   title,
@@ -12,6 +13,7 @@ export default function MovieCard({
   release_date,
   genre_ids,
   original_language,
+  id,
 }) {
   const cardRef = useRef(null);
   const [mGenres, setMGenres] = useState([]);
@@ -31,10 +33,11 @@ export default function MovieCard({
         if (genre_ids.includes(item.id)) {
           return item.name;
         }
+        return null;
       })
       .filter((name) => name);
     setMGenres(movie_genres);
-  }, []);
+  }, [genre_ids, genres]);
 
   return (
     <div
@@ -49,8 +52,10 @@ export default function MovieCard({
         />
       </div>
       <h4 className="mt-1">{title}</h4>
-      <p className="movie-card__year">{release_date.split("-")[0]}</p>
-      <div className="movie-card__details" ref={cardRef}>
+      <p className="movie-card__year">
+        {release_date?.split("-")[0] || "no year specified"}
+      </p>
+      <div className="movie-card__details " ref={cardRef}>
         <div>
           <p className="d_title pt-1 pl-1">{title}</p>
           <p className="d_overview mt-1">{overview.slice(0, 150)}...</p>
@@ -65,11 +70,12 @@ export default function MovieCard({
             <span>ენა:</span> {original_language}
           </p>
           <p>
-            <span>წელი:</span> {release_date.split("-")[0]}
+            <span>წელი:</span>{" "}
+            {release_date?.split("-")[0] || "no year specified"}
           </p>
         </div>
         <p className="see_more flex-row-center">
-          <FiPlayCircle /> <a href="#">ფილმის ყურება</a>
+          <FiPlayCircle /> <Link to={`/movie/${id}`}>ფილმის ყურება</Link>
         </p>
       </div>
     </div>

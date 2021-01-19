@@ -201,6 +201,10 @@ body {
   padding: 1rem 1.3rem;
   font-size: 1.5rem;
   color: #9b9b9b;
+
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 1px 5px rgba(0, 0, 0, .3);
 }
 
 .category ul li a:hover {
@@ -282,20 +286,25 @@ body {
 
 .movie-card__details {
   background: rgba(33, 39,41, .95);
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,1);
+  box-shadow: 0px 1rem 1.5rem rgba(0,0,0,.6);
   color: #b9b9b9;
   font-family: "Roboto", sans-serif;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: 1.3rem;
   width: 100%;
+  height: auto;
+  min-height: 100%;
+  z-index: 8;
+  left: 0;
+
 
   opacity: 0;
   transition: all .5s ease-in-out;
 
   position: absolute;
   top: 0;
-  bottom: 0;
+
 
   display: flex;
   flex-direction: column;
@@ -337,7 +346,7 @@ body {
 }
 
 .see_more a {
-  font-family: "bpg_arial";
+  font-family: "Roboto", "bpg_arial", sans-serif;
   color: #fff;
 }
 
@@ -351,6 +360,92 @@ body {
   margin-right: 1rem;
   font-size: 2rem;
   color:#319CE7;
+}
+
+/* CLEARFIX */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Full Movie Page */
+.full-movie {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 80vw;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 10;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+
+  display: flex;
+}
+
+.full__image-container{
+  max-width: 200px;
+}
+
+.full__image-container img  {
+  display: block;
+  width: 200px;
+}
+
+.full__info {
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 1.5rem;
+}
+
+.full__info p {
+  margin: .3rem 0;
+}
+
+.full__year {
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: 1.8rem;
+}
+
+.full__title {
+  font-size: 1.9rem;
+}
+
+.full__imdb svg {
+  color: #ffa800;
+  font-size: 4rem;
+}
+
+.full__genre a {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #23527c;
+  font-family: 'Roboto', 'bpg_arial';
+  padding-right: 1rem;
+}
+
+.full__genre a:hover {text-decoration: underline;}
+
+.full__overview {
+  padding: 1rem;
+  background: rgba(220, 220, 220, 0.381);
+  border-radius: 7px;
+  margin-right: 1rem;
+  max-width: 95%;
+}
+
+.full__overview{
+  font-size: 1.5rem;
 }
 
 /* medias */
@@ -368,7 +463,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .main {
-    grid-template-columns: 180px 3fr;
+    grid-template-columns: 200px 3fr;
     grid-template-areas: "category main";
   }
 

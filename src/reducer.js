@@ -15,6 +15,9 @@ const reducer = (state, action) => {
       return { ...state, movies: action.payload };
     case "SET_GENRES":
       return { ...state, genres: action.payload };
+    case "SET_MOVIES_GENRE": {
+      return { ...state, moviesGenre: action.payload };
+    }
     case "LOADING":
       return { ...state, isLoading: action.payload };
     default: {

@@ -10,10 +10,18 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 
 const Category = () => {
-  const { isSidebarOpen, closeSidebar, genres } = useGlobalContext();
+  const {
+    isSidebarOpen,
+    closeSidebar,
+    genres,
+    categoryRef,
+  } = useGlobalContext();
 
   return (
-    <div className={`category ${isSidebarOpen ? "category--show" : ""}`}>
+    <div
+      className={`category ${isSidebarOpen ? "category--show" : ""}`}
+      ref={categoryRef}
+    >
       <h4 className="flex-row-center">
         <div className="flex-row-center">
           <MdLabel className="mr-1" /> კატეგორიები
@@ -23,6 +31,11 @@ const Category = () => {
         </div>
       </h4>
       <ul>
+        <li>
+          <Link to="/">
+            <RiArrowRightSLine /> Geo.Saitebi.Ge
+          </Link>
+        </li>
         {genres.map((genre) => {
           return (
             <li key={genre.id}>

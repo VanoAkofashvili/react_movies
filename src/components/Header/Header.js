@@ -18,6 +18,7 @@ export default function Header() {
     isSearchOpen,
     openSearch,
     closeSearch,
+    categoryIconRef,
   } = useGlobalContext();
 
   const categoryClickHandler = () => {
@@ -47,6 +48,7 @@ export default function Header() {
             <div
               className="header__icons__item cat_menu"
               onClick={categoryClickHandler}
+              ref={categoryIconRef}
             >
               <GiHamburgerMenu />
             </div>

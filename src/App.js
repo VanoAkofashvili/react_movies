@@ -8,9 +8,9 @@ import Category from "./components/Category/Category";
 // pages
 import Home from "./pages/Home/Home";
 import Error from "./pages/Error/Error";
-import SingleMovie from "./pages/SingleMovie/SingleMovie";
 
 import Genres from "./pages/Genres/Genres";
+import FullMovie from "./pages/FullMovie/FullMovie";
 
 function App() {
   return (
@@ -19,11 +19,14 @@ function App() {
         <Header />
         <main className="main">
           <Switch>
-            <Route path={["/", "/genre/:id"]} exact>
+            <Route path="/" exact>
               <Home />
             </Route>
+            <Route path="/genre/:id">
+              <Genres />
+            </Route>
             <Route path="/movie/:id">
-              <SingleMovie />
+              <FullMovie />
             </Route>
             <Route path="*">
               <Error />
