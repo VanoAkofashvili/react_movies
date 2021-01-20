@@ -7,9 +7,16 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 
 const Genres = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { setMovieGenre, moviesGenre } = useGlobalContext();
+  const {
+    setMovieGenre,
+    moviesGenre,
+    categoryRef,
+    categoryIconRef,
+  } = useGlobalContext();
   const { id } = useParams();
   useEffect(() => {
+    categoryRef.current.style.display = "block";
+    categoryIconRef.current.style.visibility = "visible";
     setIsLoading(true);
     axios
       .get(
@@ -23,7 +30,7 @@ const Genres = () => {
         console.log(error);
         setIsLoading(false);
       });
-  }, [id, setMovieGenre]);
+  }, [id, setMovieGenre, categoryRef, categoryIconRef]);
 
   if (isLoading) {
     return <Loading />;

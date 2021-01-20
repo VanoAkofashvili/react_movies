@@ -8,7 +8,7 @@ import logo from "../../assets/img/logo_text.png";
 
 import { useGlobalContext } from "../../context";
 
-import Search from "./Search/Search";
+import Search from "../Search/Search";
 
 export default function Header() {
   const {

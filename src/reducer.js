@@ -18,6 +18,8 @@ const reducer = (state, action) => {
     case "SET_MOVIES_GENRE": {
       return { ...state, moviesGenre: action.payload };
     }
+    case "SET_SEARCH_TERM":
+      return { ...state, searchTerm: action.payload };
     case "LOADING":
       return { ...state, isLoading: action.payload };
     default: {
